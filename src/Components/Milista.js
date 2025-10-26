@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class MiLista extends React.Component{
-    
-    state={incidencias :[ 
+function MiLista (){
+    const [incidencias, setIncidencias]= useState([
+     
         {
     id_usuario: "768590345h",
     titulo: "Proyector averiado en aula 2",
@@ -37,18 +37,20 @@ class MiLista extends React.Component{
     ubicacion: "Sala de profesores"
 }
 
-    ]}
+    ])
     
-    render(){
+   
             return(
         <div>
             <ul>
-                {this.state.incidencias.map((i) => (
+                {props.listadoIncidencias.map((i) => (
                  <li key= {i.id_incidencia}>
-                    <strong>Titulo: {i.titulo}</strong><br></br>
-                    <strong>Descripcion: {i.descripcion}</strong><br></br>
-                    <strong>Usuario: {i.id_usuario}</strong><br></br>
-                    <strong>Ubicacion: {i.ubicacion}</strong><br></br>
+                    <strong>Titulo: </strong>{i.titulo}<br></br>
+                    <strong>Descripcion:</strong> {i.descripcion}<br></br>
+                    <strong>Usuario: </strong>{i.id_usuario}<br></br>
+                    <strong>Ubicacion: </strong>{i.ubicacion}<br></br>
+                    <strong>Urgencia: </strong>{i.nivel_urgencia}<br></br>
+                    
                  </li>
                  ))}   
                 
@@ -56,6 +58,6 @@ class MiLista extends React.Component{
         </div>
      )
     }
-}
+
 
 export default MiLista;
