@@ -10,3 +10,22 @@ h4{
   font-family:Georgia, 'Times New Roman', Times, serif;
 
 }
+#contenedor-incidencias { 
+  display: flex; 
+}
+
+main { 
+  
+  flex: 1; 
+  padding: 20px; /* Espacio interior para que el contenido no se pegue a los bordes */
+  border: 1px solid #ccc; /* Un borde sutil para verlo mejor */
+  margin-right: 20px; /* Margen para separar la lista del formulario */ 
+
+}
+
+aside {
+  width: 350px; /* Un ancho fijo para el formulario */
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
