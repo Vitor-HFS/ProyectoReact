@@ -1,12 +1,12 @@
-import React from 'react';
+import {useState} from "react"
 import './Form.css'
 
-class Form extends React.Component{
+function Form (props){
 
-envioFormulario = (event)=>{
+const envioFormulario = (event)=>{
             event.preventDefault();
             const form = event.target;
-            this.props.agregarIncidencia(
+            props.agregarIncidencia(
             form.titulo.value,
             form.Descripcion.value,
             form.opcion.value,
@@ -17,11 +17,11 @@ envioFormulario = (event)=>{
     );
  };
 
-    render(){
+    
         return (
             <div>
                 <h2>Registrar Incidencias</h2>
-                <form onSubmit={this.envioFormulario}>
+                <form onSubmit={envioFormulario}>
 
                  {/* Titulo incidencia */}
 
@@ -98,5 +98,5 @@ envioFormulario = (event)=>{
         )
     }
 
-}
+
 export default Form;
