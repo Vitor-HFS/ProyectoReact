@@ -1,0 +1,25 @@
+.Elemento-Form{
+padding: 16px;
+border:1px solid beige;
+}
+
+
+.elemento-form-button{
+
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    padding: 6px;
+    border: 10px solid beige;
+}
+
+label{
+
+    padding-right: 10px;
+    font-weight: bold;
+
+}
+input:houver{
+    background-color: black;
+    color: aliceblue;
+}
