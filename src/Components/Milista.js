@@ -3,12 +3,12 @@ import {useState} from "react";
 function MiLista (props){
 
 return(
-<>
+<div className='container mt-3'>
 
 <dl>
         {props.incidencias.map((i)=>(
 
-<React.Fragment key={i.id_incidencia}>
+<React.Fragment key={i.id_incidencia} className="mb-4 pb-2 border-bottom">
 <dt><strong>Titulo: </strong>{i.titulo}</dt>
 <dd><strong>id_incidencia: </strong>{i.id_incidencia}</dd>
 <dd><strong>Descripcion: </strong>{i.descripcion}</dd>
@@ -27,7 +27,7 @@ return(
 
 </dl>
 
-</>
+</div>
 
 )}
 

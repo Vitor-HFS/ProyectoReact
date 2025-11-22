@@ -1,10 +1,12 @@
-import './App.css';
 import React from "react"
-import Header from '../footer/Footer';
-import Footer from'../header/Header';
+import Header from'../header/Header';
+import Footer from '../footer/Footer';
 import Form from '../Components/form.js'
 import MiLista from '../Components/Milista.js';
+import IncidentList from '../Components/IncidentList';
+import { UserManagementProvider } from '../UserManagementContext'; 
 import {useState} from "react";
+import Fondo from "../IMG/Fondo.jpg";
 function App (){
 
     const [incidencias, setIncidencia] = useState([
@@ -50,22 +52,28 @@ const fechaFormateada = `${year}-${month}-${day}`;
 
     
       return(
-        <>
-        <Header></Header>
-     <div id='contenedor-incidencias'>
-        <main>
+  <UserManagementProvider>
+    <div className="card" style={{ 
+        backgroundImage: `url(${Fondo})`, 
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+    }}>
+     <div className='container-fluid nt-4 row'>
+      <Header/>
+      <h2 className="ab-4 text-center"></h2>
+        <main className="col-md-6">
             <p>Esta aplicacion muestra el contenido de mi app: </p>
-            <MiLista incidencias={incidencias}></MiLista>
+            <IncidentList incidencias={incidencias}></IncidentList>
              
             </main>
 
-            <aside>
+            <aside className="col-md-6">
             <Form agregarIncidencia={agregarIncidencia}></Form>
             </aside>
-
+<Footer/>
         </div>
-        <Footer></Footer>
-</>
+      </div>
+</UserManagementProvider>
                 );
 
  

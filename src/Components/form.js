@@ -1,5 +1,5 @@
 import {useState} from "react"
-import './Form.css'
+
 
 function Form (props){
 
@@ -19,41 +19,41 @@ const envioFormulario = (event)=>{
 
     
         return (
-            <div>
-                <h2>Registrar Incidencias</h2>
+            <div className="card p-4">
+                <h2 className="card-title mb-4 text-center">Registrar Incidencias</h2>
                 <form onSubmit={envioFormulario}>
 
                  {/* Titulo incidencia */}
 
-                    <div className="Elemento-Form">
+                    <div>
 
-                        <label>Titulo incidencia</label>
-                        <input type="text" name="titulo" placeholder="Introduce el titulo de la incidencia" required></input><br></br>
+                        <label className="mb-3 form-label">Titulo incidencia</label>
+                        <input className="mb-3 form-control" type="text" name="titulo" placeholder="Introduce el titulo de la incidencia" required></input><br></br>
                     </div>
                  
                  {/* Usuario */}
 
-                    <div className="Elemento-Form">
-                    <label>Usuario</label>
-                    <input type="text" name="usuario" required></input><br></br>
+                    <div>
+                    <label className="mb-3 form-label">Usuario</label>
+                    <input className="mb-3 form-control" type="text" name="usuario" required></input><br></br>
                     </div>
 
                  {/* Descripcion incidencia */}
 
-                 <div className="Elemento-Form">
+                 <div>
 
-                    <label>Descripcion Incidencia</label>
-                    <input type="text" name="Descripcion" required></input><br></br>
+                    <label className="mb-3 form-label">Descripcion Incidencia</label>
+                    <input className="mb-3 form-control" type="text" name="Descripcion" required></input><br></br>
 
                  </div>
 
                 {/* Categoria */}
 
-                <div className="Elemento-Form">
+                <div>
 
-                <label>Categoria: </label>
+                <label className="mb-3 form-label">Categoria: </label>
 
-                <select name="opcion" required>
+                <select className="mb-3 form-control" name="opcion" required>
                 <option value="">Seleccionar...</option>
                 <option>Hardware</option>
                 <option>Software</option>
@@ -66,9 +66,9 @@ const envioFormulario = (event)=>{
                 </div>
 
                 {/* Urgencia */}
-                <div className="Elemento-Form">
-                <label>Nivel de urgencia:</label>
-                <select name="nivel" required>
+                <div>
+                <label className="mb-3 form-label">Nivel de urgencia:</label>
+                <select className="mb-3 form-control" name="nivel" required>
                     <option value="">Seleccione...</option>
                     <option>Alta</option>
                     <option>Media</option>
@@ -77,9 +77,10 @@ const envioFormulario = (event)=>{
                 </div>
 
                 {/* Ubicación */}
-                <div className="Elemento-Form">
-                <label>Ubicación:</label>
+                <div>
+                <label className="mb-3 form-label">Ubicación:</label>
                 <input
+                className="mb-3 form-control"
                     type="text"
                     name="ubicacion"
                     placeholder="Ej: B265"
@@ -88,7 +89,7 @@ const envioFormulario = (event)=>{
                 </div>
 
                 {/* Botón */}
-                <button type="submit" className="elemento-form-button">
+                <button type="submit" className="btn btn-success mx-auto d-grid">
                 Registrar
                 </button>
 
