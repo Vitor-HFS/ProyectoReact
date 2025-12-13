@@ -1,26 +1,51 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from "react";
 
-// 1. Crear el Contexto
-export const UserManagementContext = React.createContext(null);
+export const UserManagementContext = createContext(null);
 
-// 2. Crear el Provider que contendrá la lógica y el estado
 export const UserManagementProvider = ({ children }) => {
-    // Estado de ejemplo para las incidencias (debe ser un array)
-    const [incidencias, setIncidencias] = useState([
-        // Ponga aquí los datos iniciales si los tiene, o un array vacío
-        // Ejemplo de estructura de datos:
-        // { id: 1, titulo: "Fallo de red", usuario: "user1" }
-    ]);
+  const [incidencias, setIncidencias] = useState([]);
+  const [usuarios, setUsuarios] = useState([]); // lista de usuarios
 
-    // El valor que se comparte con los componentes que lo usan
+  const agregarIncidencia = (datos) => {
+    const fecha = new Date().toISOString().split('T')[0];
     const contextValue = {
-        incidencias, // El componente IncidentList está buscando esta propiedad
-        setIncidencias // Función para actualizar el estado
+      incidencias,
+      agregarIncidencia,
+      usuarios,
+      setUsuarios
+    };
+    const usuarioEncontrado = usuarios.find((u) => u.email === datos.id_usuario);
+    // si no existe, igual crea la incidencia
+const usuarioFinal = usuarioEncontrado || { email: datos.id_usuario };
+
+
+    const nueva_incidencia = {
+      id_incidencia: incidencias.length + 1,
+      titulo: datos.titulo,
+      descripcion: datos.descripcion,
+      categoria: datos.categoria,
+      nivel_urgencia: datos.nivel_urgencia,
+      ubicacion: datos.ubicacion,
+      id_usuario: datos.id_usuario,
+      fecha_registro: fecha,
+      estado: "abierto"
     };
 
-    return (
-        <UserManagementContext.Provider value={contextValue}>
-            {children}
-        </UserManagementContext.Provider>
-    );
+    setIncidencias(prev => [...prev, nueva_incidencia]);
+    console.log("Incidencia agregada:", nueva_incidencia);
+  };
+
+  const contextValue = {
+    incidencias,
+    agregarIncidencia,
+    usuarios,
+    setUsuarios // para que AppContent pueda cargar usuarios
+  };
+
+  return (
+    <UserManagementContext.Provider value={contextValue}>
+      {children}
+    </UserManagementContext.Provider>
+  );
 };
+
